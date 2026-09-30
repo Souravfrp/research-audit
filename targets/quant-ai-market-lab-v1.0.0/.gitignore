@@ -1,0 +1,22 @@
+# Python temporary files
+__pycache__/
+*.pyc
+
+# Jupyter temporary checkpoints
+.ipynb_checkpoints/
+
+# macOS files
+.DS_Store
+
+# Secrets
+.env
+*.key
+
+# Large local datasets
+data/raw/
+
+# Trained model files
+models/
+
+# Generated processed datasets
+data/processed/
