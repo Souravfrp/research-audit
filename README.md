@@ -1,6 +1,8 @@
 # ResearchAudit
 
 **Multi-Agent Validation for Quantitative and Risk Analytics**
+A proposal for multi-agent validation of quantitative and risk analytics projects. No experiments have been run yet.
+
 
 ## Status
 
