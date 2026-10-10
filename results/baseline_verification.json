@@ -1,0 +1,14 @@
+{
+  "verified_at_utc": "2026-10-10T14:57:41.938083+00:00",
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "tests_passed": 52,
+  "checker_tests": 40,
+  "original_cost_tests": 10,
+  "known_gap_characterization_tests": 2,
+  "source_files_checked": 34,
+  "findings": 10,
+  "audited_source_unchanged": true,
+  "checker_sha256": "7707c94fe0b3be900e6d1ea2923d21033a63b46daeb5fe553c2e2d3285c90142",
+  "scope": "Baseline screening and isolated cases only; no independent detection accuracy, multi-agent implementation or full financial reproduction"
+}

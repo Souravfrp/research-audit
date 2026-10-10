@@ -1,0 +1,181 @@
+{
+  "repository": "Souravfrp/research-audit",
+  "commit": "5f353c9d72ea69aaa1c39e76c77be5ed0044220d",
+  "files": [
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/README.md",
+      "git_blob": "57371ef27ac20715a9dc93527063a607a9014546",
+      "sha256": "2ead03f727328302c3a891b0d3fe58e356380228edb0c783f9694c5b3ed25c07"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/adaptive_window_selection.py",
+      "git_blob": "ef34a03c8132f59432d37152d087db8c7fe14798",
+      "sha256": "884ff34fa095b2c41165fc915c4a1a0e3670c2cbc9a7457772d5fd14a1f6521a"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/april_2020_ridge_diagnostic.py",
+      "git_blob": "0154d3b81a5c97632db3bd16a24da846351ced4f",
+      "sha256": "0218b496c6993123cf0172f547f3e20441751f13593a119f556009136ba6d82d"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/compute_returns.py",
+      "git_blob": "1fa59815055b1ead95e8558c463bd14229171b61",
+      "sha256": "5386514523782a6953e01f97a1e2ae11b936e66eae59a84035a2716c99fc46de"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/download_data.py",
+      "git_blob": "c9b4e7587090cad1406f35f2e1278742ba307821",
+      "sha256": "4d2081556f426f62c858c202f03b5bbded30d6243a7659e91a4bd65193a3cd7c"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/exploratory_analysis.py",
+      "git_blob": "6951305280263f1fea47e99c15eb19697d9913f0",
+      "sha256": "d80b4f674839077bcefc15b05f6ef7b928248c09057547ae65aa1bdcce477987"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/final_model_visualizations.py",
+      "git_blob": "a60743b6551054c510f043d1501a9aec7de0a19c",
+      "sha256": "11233d40affd75897dbd6d05d27b761ef7c2da714f95df3af958dbaa9e747709"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/later_forecast_plot.py",
+      "git_blob": "080097947d6ed42b5f3abaac007383815018bff9",
+      "sha256": "7ef693f859ee6ea7ca2adef7cc9b1ab9175ff6df68e3e69f3e4e8881bbb12eb5"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/later_walk_forward_comparison.py",
+      "git_blob": "ac32d15a59199396dc49e6dcdd146cfc79064c07",
+      "sha256": "64777478c221dc6f1b49e540431726205ad4c722be8396732d40dfcf0d50a735"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/later_walk_forward_evaluation.py",
+      "git_blob": "8c3aad8a43a30a5df3bcfb5fea555b5de5f4ce65",
+      "sha256": "8f01568ef1043179638a6779c2b493fa12e94cc29e095bef9afa9b2c18f25bcc"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/pca_analysis.py",
+      "git_blob": "6de469edeac7024acae5c06b0a2f4b209b6b3263",
+      "sha256": "ac94c8a35605e1c701170f3a081b128d43d3d32818950a9f88768ec226002681"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/portfolio_backtest.py",
+      "git_blob": "7b662c5f3cfefa4d59e613a6aa3e85c7154ba7eb",
+      "sha256": "d1b4e45ecc2b20ad6fb5e7f6d0c54874c1e2fe1d75f5ecf671c2e5ec0ea7bf3c"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/portfolio_benchmarks.py",
+      "git_blob": "288919d6fb8d3cd07ea3c637d89506b6fe71c59a",
+      "sha256": "e6362e6fc849681504249de17ccd82536f5da499daa79aa0eb7238840079d886"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/portfolio_optimization.py",
+      "git_blob": "5f5771aeb3e254d3924f87c1447bb432da082c17",
+      "sha256": "ce617fe52367a34d1da4344e9afa26d140ebeef425fb38efae3922f597d79ad2"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/portfolio_risk_visualization.py",
+      "git_blob": "385f3bfee669aa489d06064c1ad47731116dfa99",
+      "sha256": "f40584eccb263db96f480716008af00cea2c55b36b5021faa2ace519d7743b59"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/portfolio_robustness.py",
+      "git_blob": "00d99474c322a7e1ca8583f48927472ca579c5d4",
+      "sha256": "ebe4f9e11d6d14bb7830fe46b6999741504f01bffdcf3c95259d0c6e4c578048"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/portfolio_visualization.py",
+      "git_blob": "eb667818d744ea10ca450479a5795231e3cc50e9",
+      "sha256": "86f67e0df5b4f88185367aec0cf9f3856027372079c011f6540d48f486599a88"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/random_forest_permutation_importance.py",
+      "git_blob": "1cccf1f2f125db56a5563c249d9513d9ebe86178",
+      "sha256": "ff16265f76c5810698cccd128c5f90fad997fcd6d8ee5864d71dad57277fd0e7"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/random_forest_risk_forecasting.py",
+      "git_blob": "8d9de93f0bdb28d36e9dba1763bb6a473c2d3870",
+      "sha256": "d6b78add477fac99f41ed923d76b9bcd1866e2ae3aafd5ae87ac8cdec2f468d2"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/random_forest_validation.py",
+      "git_blob": "b7f22675f6ad8d898399f483919876889f053bb5",
+      "sha256": "fc31cbe5ad5a88ac6193a84f1e342e4f05f499d4ed9033619e91f011c6eebe09"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/regime_clustering.py",
+      "git_blob": "15bc867b6581f2339a603de4962bcb2f2e51d9b2",
+      "sha256": "1314ed6ec8f40cd0ca124176b1a3965d829cb7acbc581a56e22ad9560f870bff"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/regime_features.py",
+      "git_blob": "d8890626ed0479eb86e7d20935b782a793fbd7d6",
+      "sha256": "b97e5c94fb44b33091bf6977d6405003b9cb2b4382eaf960aff7e9e4871fe081"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/regime_hmm.py",
+      "git_blob": "34dfd3fa9c4c433ff2e7c7b7e496668e5310a3fb",
+      "sha256": "a9235618f35d68f6ed4b8e0220f2f60b2470a3f0533ee8f0909d707ee517871b"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/regime_hmm_evaluation.py",
+      "git_blob": "0642b5210a71dc880097703566137652653800c8",
+      "sha256": "52f96b575ec2609aa19adaaf7b10f201854448e65303b17f8a0a978581779372"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/ridge_alpha_validation.py",
+      "git_blob": "54b31016c7bf3564dd11f11f5380d55ad9b1d73a",
+      "sha256": "9db17eac5d84f0c3bbf8115aa1767648f57f0a1cc1ab118667b86fc5d0431189"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/ridge_coefficient_stability.py",
+      "git_blob": "36e7b9e0b0fa98a409dbcf0dabd20daf91970845",
+      "sha256": "80e6a2f57fc2b02e12cd3aa7e57efb7177d11d8b487ff7c58422d315ccac13b2"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/ridge_risk_forecasting.py",
+      "git_blob": "6715891ee85398635912b88e55d66b24de593a7d",
+      "sha256": "9dd9a3a454bf4155fddb50d098fabbe3100f55b5a0f42eb1296f14e72bb0a594"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/risk_forecast_comparison.py",
+      "git_blob": "542e57d654e0d094b4025cb74e455103e70c1a68",
+      "sha256": "6361d4dce576146369c33bdbec7f2ff867a0ed87c54b69aff1b28ca87caf39f6"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/risk_forecasting.py",
+      "git_blob": "7ffaf925b8ef6d254254cf9f36c128a51f2a7f40",
+      "sha256": "0aa3afe869b063fc6b9e5fe698dc2380ea0a18af0856e66d59df67609b8e9668"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/risk_full_history_plot.py",
+      "git_blob": "90d4dc7f9b9eb4fce838acdfae044a3827b776bb",
+      "sha256": "2a7a24e0f2b113063cbf69fd6fc2aad639ae1a513d5e68ed1ea0604b661f946e"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/temporal_split.py",
+      "git_blob": "f06bd572ecea8ecfed1a47fdbd09b8259ddae237",
+      "sha256": "01086ee1036241c9eb18a047035957821a38500ac29fe2140ccd55bcdf72d27d"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/walk_forward_comparison.py",
+      "git_blob": "fda4bc306dd882be69d8334503f5ae3eccfdde44",
+      "sha256": "9712220c5a879b5fa551a42c1897424970d0d64e102e1b28efb33d9432187c2f"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/walk_forward_dates.py",
+      "git_blob": "d418690284157ca2d9dcc58032275a559f4c2f0f",
+      "sha256": "713ecf52ff8c85f0b58f08d20d6dbfe2fb423d22c5e83a0aec160c9dadcac51d"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/walk_forward_evaluation.py",
+      "git_blob": "843539469a1a889342bf41184322eb15ea30ad1f",
+      "sha256": "72cec455445d5be701e702ee9ddd2214a73d2c72d273869d6ea74ab5b6dcb456"
+    },
+    {
+      "path": "targets/quant-ai-market-lab-v1.0.0/src/walk_forward_ridge.py",
+      "git_blob": "d4230a88aa27d6db90ff4a1ff2218c9eda0cf17e",
+      "sha256": "458dfd4f751488070e0fc099491c8f6d23839035012637968556a376f2eede6f"
+    }
+  ]
+}

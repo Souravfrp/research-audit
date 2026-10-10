@@ -1,0 +1,21 @@
+rule,case,should_fire,fired,correct
+RC01,negative shift as feature,True,True,True
+RC01,positive shift (lag),False,False,True
+RC02,split with default shuffling,True,True,True
+RC02,split with shuffle=True,True,True,True
+RC02,split with shuffle=False,False,False,True
+RC02,shuffled KFold,True,True,True
+RC02,ordered KFold,False,False,True
+RC03,scaler fitted then used,True,True,True
+RC03,no transformer,False,False,True
+RC04,forest without seed,True,True,True
+RC04,forest with seed,False,False,True
+RC04,global numpy generator,True,True,True
+RC04,global generator with seed,False,False,True
+RC05,cost parameter never used,True,True,True
+RC05,cost parameter used,False,False,True
+RC06,absolute path,True,True,True
+RC06,relative path,False,False,True
+RC07,bare except,True,True,True
+RC07,ignored exception,True,True,True
+RC07,handled exception,False,False,True

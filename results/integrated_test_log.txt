@@ -1,0 +1,57 @@
+test_comment_seed_is_not_execution (test_checker_regressions.RegressionCases.test_comment_seed_is_not_execution) ... ok
+test_conditional_unknown_seed_invalidates_fixed_seed (test_checker_regressions.RegressionCases.test_conditional_unknown_seed_invalidates_fixed_seed) ... ok
+test_direct_random_alias (test_checker_regressions.RegressionCases.test_direct_random_alias) ... ok
+test_empty_tests_directory_is_not_test_evidence (test_checker_regressions.RegressionCases.test_empty_tests_directory_is_not_test_evidence) ... ok
+test_file_is_not_project (test_checker_regressions.RegressionCases.test_file_is_not_project) ... ok
+test_function_draw_is_not_certified_by_module_seed (test_checker_regressions.RegressionCases.test_function_draw_is_not_certified_by_module_seed) ... ok
+test_generator_does_not_seed_global_rng (test_checker_regressions.RegressionCases.test_generator_does_not_seed_global_rng) ... ok
+test_invalid_scope_syntax_is_reported (test_checker_regressions.RegressionCases.test_invalid_scope_syntax_is_reported) ... ok
+test_late_seed_does_not_cover_earlier_draw (test_checker_regressions.RegressionCases.test_late_seed_does_not_cover_earlier_draw) ... ok
+test_missing_project_rejected (test_checker_regressions.RegressionCases.test_missing_project_rejected) ... ok
+test_none_generator_seed (test_checker_regressions.RegressionCases.test_none_generator_seed) ... ok
+test_none_random_state (test_checker_regressions.RegressionCases.test_none_random_state) ... ok
+test_none_seed_resets_known_seed (test_checker_regressions.RegressionCases.test_none_seed_resets_known_seed) ... ok
+test_numpy_alias (test_checker_regressions.RegressionCases.test_numpy_alias) ... ok
+test_ordered_folds_are_not_randomness_findings (test_checker_regressions.RegressionCases.test_ordered_folds_are_not_randomness_findings) ... ok
+test_positional_only_cost (test_checker_regressions.RegressionCases.test_positional_only_cost) ... ok
+test_real_closure_reference (test_checker_regressions.RegressionCases.test_real_closure_reference) ... ok
+test_shadowed_nested_parameter (test_checker_regressions.RegressionCases.test_shadowed_nested_parameter) ... ok
+test_shuffled_fold_without_seed (test_checker_regressions.RegressionCases.test_shuffled_fold_without_seed) ... ok
+test_top_level_fixed_seed_covers_later_draw (test_checker_regressions.RegressionCases.test_top_level_fixed_seed_covers_later_draw) ... ok
+test_backtest_benchmarks_and_robustness_pass_the_cost_rate (test_claim_07_transaction_costs.CallChain.test_backtest_benchmarks_and_robustness_pass_the_cost_rate) ... ok
+test_cost_scenarios_and_scenario_counts (test_claim_07_transaction_costs.CallChain.test_cost_scenarios_and_scenario_counts) ... ok
+test_robustness_analysis_uses_ten_basis_points (test_claim_07_transaction_costs.CallChain.test_robustness_analysis_uses_ten_basis_points) ... ok
+test_first_purchase_from_cash (test_claim_07_transaction_costs.HandCalculatedCases.test_first_purchase_from_cash) ... ok
+test_full_switch_from_one_asset_to_another (test_claim_07_transaction_costs.HandCalculatedCases.test_full_switch_from_one_asset_to_another) ... ok
+test_no_trade_costs_nothing (test_claim_07_transaction_costs.HandCalculatedCases.test_no_trade_costs_nothing) ... ok
+test_zero_cost_changes_nothing (test_claim_07_transaction_costs.HandCalculatedCases.test_zero_cost_changes_nothing) ... ok
+test_current_matrix_weights_are_accepted_and_change_cost (test_claim_07_transaction_costs.KnownValidationGaps.test_current_matrix_weights_are_accepted_and_change_cost) ... ok
+test_current_near_unit_weights_are_accepted_and_overallocate (test_claim_07_transaction_costs.KnownValidationGaps.test_current_near_unit_weights_are_accepted_and_overallocate) ... ok
+test_accounting_identity_and_cost_formula_on_random_portfolios (test_claim_07_transaction_costs.Properties.test_accounting_identity_and_cost_formula_on_random_portfolios) ... ok
+test_higher_cost_rate_means_higher_cost_and_lower_value (test_claim_07_transaction_costs.Properties.test_higher_cost_rate_means_higher_cost_and_lower_value) ... ok
+test_invalid_inputs_are_rejected (test_claim_07_transaction_costs.Properties.test_invalid_inputs_are_rejected) ... ok
+test_centered_rolling (test_future_pattern_rules.FuturePatternRules.test_centered_rolling) ... ok
+test_documented_variable_and_alias_blind_spots (test_future_pattern_rules.FuturePatternRules.test_documented_variable_and_alias_blind_spots) ... ok
+test_main_guard_seed_is_conservative_candidate (test_future_pattern_rules.FuturePatternRules.test_main_guard_seed_is_conservative_candidate) ... ok
+test_negative_diff_positional_and_keyword (test_future_pattern_rules.FuturePatternRules.test_negative_diff_positional_and_keyword) ... ok
+test_negative_pct_change_positional_and_keyword (test_future_pattern_rules.FuturePatternRules.test_negative_pct_change_positional_and_keyword) ... ok
+test_positive_and_zero_periods (test_future_pattern_rules.FuturePatternRules.test_positive_and_zero_periods) ... ok
+test_uncentered_rolling (test_future_pattern_rules.FuturePatternRules.test_uncentered_rolling) ... ok
+test_clean_code_has_no_findings (test_rule_checker.Details.test_clean_code_has_no_findings) ... ok
+test_docstring_mention_of_a_parameter_does_not_count_as_use (test_rule_checker.Details.test_docstring_mention_of_a_parameter_does_not_count_as_use) ... ok
+test_finding_has_file_line_and_code (test_rule_checker.Details.test_finding_has_file_line_and_code) ... ok
+test_syntax_error_is_reported_not_raised (test_rule_checker.Details.test_syntax_error_is_reported_not_raised) ... ok
+test_project_without_tests_gets_rc08_and_with_tests_does_not (test_rule_checker.ProjectLevel.test_project_without_tests_gets_rc08_and_with_tests_does_not) ... ok
+test_every_seeded_case_behaves_as_designed (test_rule_checker.SeededCases.test_every_seeded_case_behaves_as_designed) ... ok
+test_bad_bytes_are_reported_not_a_scan_crash (test_scan_coverage.CoverageTests.test_bad_bytes_are_reported_not_a_scan_crash) ... ok
+test_cli_preserves_existing_reports (test_scan_coverage.CoverageTests.test_cli_preserves_existing_reports) ... ok
+test_declared_non_utf8_encoding_is_supported (test_scan_coverage.CoverageTests.test_declared_non_utf8_encoding_is_supported) ... ok
+test_dependency_tests_do_not_count_as_project_tests (test_scan_coverage.CoverageTests.test_dependency_tests_do_not_count_as_project_tests) ... ok
+test_empty_directory_reports_no_sources (test_scan_coverage.CoverageTests.test_empty_directory_reports_no_sources) ... ok
+test_parse_error_does_not_prevent_other_file_checks (test_scan_coverage.CoverageTests.test_parse_error_does_not_prevent_other_file_checks) ... ok
+test_symlink_source_is_skipped (test_scan_coverage.CoverageTests.test_symlink_source_is_skipped) ... ok
+
+----------------------------------------------------------------------
+Ran 52 tests in 0.477s
+
+OK
