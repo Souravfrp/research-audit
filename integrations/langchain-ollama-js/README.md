@@ -82,22 +82,22 @@ This is the **smallest real retrieval experiment**, separate from the previous L
 
 The demonstration reads three **local, allowlisted** ResearchAudit files without modifying them:
 
-- \`claims/claim_07_transaction_costs.md\`
-- \`tests/test_claim_07_transaction_costs.py\`
-- \`targets/quant-ai-market-lab-v1.0.0/src/portfolio_backtest.py\`
+- `claims/claim_07_transaction_costs.md`
+- `tests/test_claim_07_transaction_costs.py`
+- `targets/quant-ai-market-lab-v1.0.0/src/portfolio_backtest.py`
 
 It divides their text into small overlapping **chunks** (16 lines each, starting every 8 lines), scores each chunk against the question, selects up to 10 relatively relevant chunks, prints **source path + exact line range + source file SHA-256**, and passes those excerpts to the same Qwen3 model via LangChain. This is genuine (keyword-based) retrieval + generation, but **not semantic/vector RAG yet**, and it does not guarantee relevant documents are found.
 
 From the already installed example folder on your Mac, run:
 
-\`\`\`bash
+```bash
 git pull --ff-only
 npm run check
 npm run rag:check
 npm run rag
-\`\`\`
+```
 
-**Important:** \`git pull --ff-only\` must be run from inside the research-audit Git checkout, which includes this example folder. Git identifies the repository from a nested folder. \`npm run rag:check\` tests the retriever **without calling an LLM**. \`npm run rag\` then invokes Qwen3 **locally**.
+**Important:** `git pull --ff-only` must be run from inside the research-audit Git checkout, which includes this example folder. Git identifies the repository from a nested folder. `npm run rag:check` tests the retriever **without calling an LLM**. `npm run rag` then invokes Qwen3 **locally**.
 
 **Terminology:**
 
