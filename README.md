@@ -10,7 +10,7 @@ I am developing an audit workflow for quantitative and risk analytics projects. 
 
 I am building the audit in two stages. First, I have built a rule-based checker and tested its screening rules using designed examples, regression probes and the frozen Quant AI Market Lab snapshot. These checks do not measure independent real-world detection accuracy. Then I plan to build a multi-agent system with four AI agents: a math checker, a code and implementation checker, a methodology and/or domain-soundness checker, and a skeptic. The skeptic challenges the verdicts of the other three and asks them to support their answers with evidence, so that no verdict is accepted without scrutiny. A coordinator, written as plain Python, will send questions to the agents, repeat them to test whether the answers are consistent, and produce a final report.
 
-I am planning to run everything locally with Ollama, without a third-party AI API, so the whole system can be run and inspected on my own machine. A local model may reason less well than a cloud model on complex judgments, so the report will mark claims that remain disputed or unresolved instead of hiding them.
+I plan to begin with Ollama running a local model, then learn a small LangChain application and optional OpenAI API integration for carefully separated hosted-model comparisons. OpenAI API use is not necessary for the local-only implementation; it requires its own credentials and approved data-handling decisions. A local model may reason less well than a hosted model on complex judgments, so any report must mark claims that remain disputed or unresolved rather than hiding them.
 
 ## Baseline release: 10 October 2026
 
@@ -65,9 +65,9 @@ I do not write "all seven claims verified." Passing the two known-gap characteri
 
 ## Learning the local LLM/RAG workflow (no-code corporate pilot)
 
-Before implementing agents, I am using a [step-by-step AnythingLLM Desktop setup guide](docs/CORPORATE_NO_CODE_LLM_RAG_START.md) to learn how to run one local model and then introduce document retrieval without initially writing Python. It describes a single-user business proof of concept, the exact setup sequence, terminology, document-based evaluation, and which security/access controls would be needed before an organizational deployment.
+Before implementing agents, I am following a [step-by-step Ollama → OpenAI API concepts → LangChain → RAG setup guide](docs/CORPORATE_NO_CODE_LLM_RAG_START.md). The first milestone uses Ollama's Mac chat app **without Python or a Terminal**. Later milestones introduce a minimal LangChain application, optional hosted OpenAI model access, source-grounded retrieval and evidence-based evaluation. AnythingLLM is an optional visual add-on, **not** a substitute for the planned stack. The guide defines every tool and discusses corporate confidentiality, API-key and billing boundaries.
 
-**Status:** the guide has been documented; local installation, a completed LLM pilot, and a working RAG integration have **not** yet been demonstrated. The verified rule-based baseline remains the only completed audit implementation.
+**Status:** this plan is documented only. No Ollama installation, OpenAI API call, LangChain application, or RAG integration has been demonstrated by the repository. The verified rule-based checker remains the only completed auditing implementation.
 
 ## Why I Want to Build This
 
