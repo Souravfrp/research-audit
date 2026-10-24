@@ -1,6 +1,6 @@
 # ResearchAudit — Ollama, LangChain, OpenAI and RAG: beginner-to-corporate roadmap
 
-**Status — 24 October 2026:** This is a **setup and learning plan, not a completed integration**. The 10 October rule-based checker, its 52 locally verified test methods, and the frozen Quant AI Market Lab v1.0.0 source are unchanged. No Ollama model, OpenAI API integration, LangChain pipeline, or RAG system has been demonstrated in this repository.
+**Status — 24 October 2026:** The owner has now installed and tested Ollama and completed a **local LangChain.js → Ollama → Qwen3 LLM-only example**; [the user-supplied execution evidence is recorded here](../docs/local_llm_trial_2026-10-24.md). The new keyword-based RAG exercise is prepared but **not yet executed on the user's Mac**; no OpenAI API integration, embedding index, vector store, or four-agent system has been demonstrated. The 10 October rule-based checker, its 52 locally verified test methods, and the frozen Quant AI Market Lab v1.0.0 source are unchanged.
 
 ## Goal and choice of tools
 
