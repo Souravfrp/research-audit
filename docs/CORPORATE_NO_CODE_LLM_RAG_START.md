@@ -69,6 +69,10 @@ Official documentation:
 
 **Pass condition:** A version-controlled minimal project can ask the same question of the local and (when authorized) hosted provider, then save distinct outputs. We do not need four agents yet.
 
+### First LangChain.js + Ollama runnable exercise
+
+A minimal [**JavaScript starter**](../integrations/langchain-ollama-js/README.md) is now included in this repository. It uses the exact local model `qwen3:4b-instruct` with LangChain's `ChatOllama` integration. The learner needs to clone/pull the repository, `npm install` inside the example directory, then `npm start`; **no JavaScript copy/paste and no Python**. The example is LLM-only, with no access to the audited project files or OpenAI API. Its syntax has been checked, but the actual Ollama integration must still be tested on the learner's Mac.
+
 ## Stage 4 — RAG: connect ResearchAudit to its evidence
 
 RAG is not fine-tuning or retraining. Build an index using **public frozen** research documents such as:
