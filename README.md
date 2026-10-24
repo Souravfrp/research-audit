@@ -67,7 +67,7 @@ I do not write "all seven claims verified." Passing the two known-gap characteri
 
 Before implementing agents, I am following a [step-by-step Ollama → OpenAI API concepts → LangChain → RAG setup guide](docs/CORPORATE_NO_CODE_LLM_RAG_START.md). The first milestone uses Ollama's Mac chat app **without Python or a Terminal**. Later milestones introduce a minimal LangChain application, optional hosted OpenAI model access, source-grounded retrieval and evidence-based evaluation. AnythingLLM is an optional visual add-on, **not** a substitute for the planned stack. The guide defines every tool and discusses corporate confidentiality, API-key and billing boundaries.
 
-**Status:** this plan is documented only. No Ollama installation, OpenAI API call, LangChain application, or RAG integration has been demonstrated by the repository. The verified rule-based checker remains the only completed auditing implementation.
+**Status (24 October 2026):** The owner supplied Terminal evidence of a successful **local LangChain.js → Ollama → Qwen3 LLM-only call**; see [the dated run record](docs/local_llm_trial_2026-10-24.md). A first [keyword-retrieval RAG lesson](integrations/langchain-ollama-js/README.md) has been prepared but **has not yet been executed on the Mac**. There has been no OpenAI API call, trained model, four-agent audit, or end-to-end audit result from this work. The historical rule-based checker remains the only completed source-audit implementation.
 
 ## Why I Want to Build This
 
