@@ -63,6 +63,12 @@ The checker refuses to overwrite reports unless I explicitly use `--force`; I no
 
 I do not write "all seven claims verified." Passing the two known-gap characterization tests records defects, not corrected input behaviour. The earlier report under `results/baseline/` is retained as historical evidence and is distinct from the current checker.
 
+## Learning the local LLM/RAG workflow (no-code corporate pilot)
+
+Before implementing agents, I am using a [step-by-step AnythingLLM Desktop setup guide](docs/CORPORATE_NO_CODE_LLM_RAG_START.md) to learn how to run one local model and then introduce document retrieval without initially writing Python. It describes a single-user business proof of concept, the exact setup sequence, terminology, document-based evaluation, and which security/access controls would be needed before an organizational deployment.
+
+**Status:** the guide has been documented; local installation, a completed LLM pilot, and a working RAG integration have **not** yet been demonstrated. The verified rule-based baseline remains the only completed audit implementation.
+
 ## Why I Want to Build This
 
 My academic background is in mathematics, computer science and system sciences. As I move from academic research towards quantitative research, data science and risk analytics roles, I want to study whether multi-agent systems can evaluate technical work in a rigorous and reproducible way.
