@@ -1,76 +1,108 @@
-# ResearchAudit — local LLM and RAG: no-code corporate pilot
+# ResearchAudit — Ollama, LangChain, OpenAI and RAG: beginner-to-corporate roadmap
 
-**Status (24 October 2026):** Setup instructions only. **No model has been installed, executed, or evaluated by the repository.** The existing rule-based baseline and the frozen Quant AI Market Lab v1.0.0 target remain unchanged.
+**Status — 24 October 2026:** This is a **setup and learning plan, not a completed integration**. The 10 October rule-based checker, its 52 locally verified test methods, and the frozen Quant AI Market Lab v1.0.0 source are unchanged. No Ollama model, OpenAI API integration, LangChain pipeline, or RAG system has been demonstrated in this repository.
 
-## Goal
+## Goal and choice of tools
 
-Learn the practical workflow for building a business-grade, evidence-based LLM assistant without initially writing Python. The immediate milestone is **one local LLM responding in a graphical application**. The next milestone will add **document retrieval (RAG)**. Neither a local desktop pilot nor a convincing answer is production approval or evidence of mathematical correctness.
+Build an auditable **business application** in stages, while keeping installation and early experiments understandable for someone new to LLMs. The desired stack is:
 
-The initial pilot is kept separate from the four-agent ResearchAudit proposal. A future enterprise application needs organization-approved hosting, identity/access controls, retention/security policies, evaluation, monitoring, and automated integration.
-
-## 1. Choose the simplest tool
-
-**AnythingLLM Desktop:** https://anythingllm.com/download
-
-It supports a built-in local language model, a chat interface, document ingestion and retrieval, workspaces, and optional agents. It is a convenient way to learn **LLM → RAG → evaluation** within one app, rather than starting with Python, LangChain, a separate vector database or several local servers.
-
-Official sources:
-- macOS installation: https://docs.anythingllm.com/installation-desktop/macos
-- Built-in local model: https://docs.anythingllm.com/setup/llm-configuration/local/built-in
-- Document attachment versus RAG: https://docs.anythingllm.com/chatting-with-documents/introduction
-- Query mode versus chat mode: https://docs.anythingllm.com/features/chat-modes
-- Desktop versus Docker deployment: https://docs.anythingllm.com/installation-docker/overview
-
-## 2. Manual setup — no Terminal or Python
-
-1. On the Mac, choose **Apple menu → About This Mac**. Note **Chip/Processor** and **Memory** (RAM). AnythingLLM recommends 16 GB RAM; a smaller model can be explored on more constrained machines, with limitations. M-series Macs generally perform better for local inference than Intel Macs.
-2. At the official download page, choose **Apple Silicon** if the chip is M1/M2/M3/etc., or **Apple Intel** for an Intel machine. Download the macOS `.dmg`, open it, and drag the AnythingLLM app to Applications.
-3. Open AnythingLLM. Choose its **built-in/local** LLM provider on first-run setup; select a **small instruct/chat model** compatible with available memory. Prefer a smaller 3B–4B class model if available on a lower-memory Mac; the actual model names and sizes shown depend on the app version and available models. Record the *exact model name and version* rather than inventing it.
-4. Create a workspace named **ResearchAudit – Local AI Pilot**. Ask one straightforward business-style question: **"What checks should a financial risk model pass before internal approval?"** This is a language-model-only check; no internal source document has been supplied.
-5. Keep the first response and record the model name, date, hardware details, question, answer summary and obvious omissions. Do not mark a single plausible response as independently verified.
-
-**First milestone acceptance:** The installed local model answers within the desktop application without Python, API keys or a remote model endpoint. The project repository cannot verify this until the user actually runs it and records evidence.
-
-## 3. Add RAG only after the local LLM works
-
-Use your own **public, frozen** ResearchAudit documents as the first safe data source:
-- `claims/claim_07_transaction_costs.md`
-- `claims/claim_inventory.md`
-- `docs/baseline_evaluation.md`
-
-In AnythingLLM, open the ResearchAudit workspace, add these documents to the workspace, and choose the option to **embed** or make them searchable across workspace chats (rather than only attaching full text to one chat). The exact location of controls can differ by app version; consult the official document guide above. Start with the default local embedding model and vector database rather than configuring extra services.
-
-Use **Query Mode**, if available, for a question that should be answered from uploaded documents rather than general language-model knowledge. Example: **"Which two input-validation gaps were found in Claim 7? Cite the supplied source."**
-
-**Second milestone acceptance:** Both issues from the published audit note are recovered and accurately attributed; if the document is absent or unsupported, the assistant should say so. Manually verify citations and exact statements against source. Retrieval is not a proof that the answer is correct.
-
-## Terms — what and why
-
-| Term | Meaning | Why we need it |
+| Component | Definition | Why it is part of ResearchAudit |
 | --- | --- | --- |
-| LLM | Large language model: a pretrained model that predicts/generates text in response to instructions | Answer questions and analyze retrieved material |
-| Model weights | Saved numerical parameters from training | Make local inference possible without training a model |
-| Inference | Running an existing model to produce a response | We are **using**, not training, a model |
-| Prompt | Question/instructions given to the model | Define the task, scope and response format |
-| Workspace | Logical separation of project documents and chats | Keep pilot material organized and reduce accidental mixing |
-| RAG | Retrieval-augmented generation: find relevant source passages, then give them to a model | Answers can be grounded in specific project evidence |
-| Chunk | Short section of a larger file | Enables retrieval without supplying the entire repository every time |
-| Embedding | Numeric vector representing text for search | Find semantically related source passages |
-| Vector database | Storage/search system for document embeddings | Retrieve candidate evidence efficiently |
-| Source citation | File/path or passage supporting a claim | Allows human verification instead of accepting fluent prose |
-| Evaluation | Testing on known-answer cases and recording failures | Determine whether the system works reliably |
-| POC | Proof of concept: small demonstration of feasibility | A learning milestone, **not** a production deployment |
+| **Ollama** | A local model runner and Mac chat app | Use an existing language model on the Mac and learn inference, model versions, and resource limits without starting with Python or API billing |
+| **OpenAI API** | A hosted model service requiring a separate API account/key for conventional API integration | Learn hosted model integration and later compare model quality, latency and cost to Ollama |
+| **LangChain** | An application framework available in Python and JavaScript/TypeScript | Build repeatable workflows that talk to different models, process documents, retrieve evidence, and record outputs |
+| **RAG** | Retrieval-augmented generation: find relevant source passages before giving them to an LLM | Ground audits in frozen documentation, code, test output and claim inventories |
+| **ResearchAudit checker** | The existing deterministic AST/rule-based program | Preserve a non-LLM baseline for comparison and independently check source claims |
 
-## What makes this corporate-oriented?
+**These are complementary components, not four separate LLMs.** Ollama is a way to run a local model. OpenAI is an optional remote provider. LangChain connects providers and retrieval. RAG is a technique, not another model.
 
-**Pilot:** Use sample/public documents, write down the business question, record model version and evaluation cases, and collect failure examples.
+We choose **Ollama first**. AnythingLLM remains an **optional** user interface for a visual document-chat demonstration later, but it is not the main required technology stack and should not replace learning LangChain.
 
-**Internal product:** Integrate permitted internal repositories/document stores through approved interfaces; require reliable citations, access control, human review of decisions, and reproducible tests.
+## Stage 0 — Check the Mac (no installation yet)
 
-**Enterprise deployment:** AnythingLLM Desktop is single-user and should not be mistaken for an access-controlled shared corporate service. The product's server/Docker edition supports multi-user and workspace management, but must still be evaluated by the organization's security/privacy and compliance teams. Do not upload a future employer's proprietary documents to a personal computer or third-party model without explicit permission.
+Choose **Apple menu → About This Mac**. Record the macOS version, **Chip/Processor**, and **Memory**. This controls compatibility and which *local* models will fit. Do not select a model size before checking the hardware. Ollama's macOS download currently requires **macOS 14 Sonoma or later**; on an older macOS version, first consider operating-system compatibility rather than blindly installing.
 
-## Why no Python, Ollama, or agents yet?
+The model is run locally only when a **local** model is selected; Ollama also offers explicitly hosted cloud models. Do not confuse a cloud model with the privacy or offline properties of local inference.
 
-A graphical pilot distinguishes **model capability** from **retrieval** and makes the workflow observable. Once both milestones work, a corporate development version can use an approved API/server, scripted evaluations, version-controlled prompts, document-ingestion rules, identity/role controls, tests and monitoring. The planned four-agent ResearchAudit implementation belongs to that later stage.
+Official sources: [Ollama macOS download](https://ollama.com/download/mac), [Ollama local desktop chat app](https://ollama.com/blog/new-app), [Ollama quickstart](https://docs.ollama.com/quickstart).
 
-Nothing about this guide changes the claims, test records or frozen target in the October 10 baseline.
+## Stage 1 — Ollama: first local LLM, no Python or Terminal
+
+1. Open https://ollama.com/download/mac and download the official macOS application compatible with the Mac.
+2. Open the download, install and launch the Ollama app through Finder/Applications as directed by its installer.
+3. In Ollama's graphical chat interface, choose/download a **small local chat/instruction model** that fits available memory. Model names, sizes and available choices may change. Record the *exact model and version*, RAM and whether it was local or hosted. Do not start with a huge model simply because it is popular.
+4. Ask exactly this question: **"What checks should a financial risk model pass before an internal company approves it?"** Save the output and note missing assumptions and citations.
+5. Then ask a second question: **"If a model audit lacks source evidence, should I say the claim is correct?"** Check whether the model admits uncertainty.
+
+**Pass condition:** A genuinely local model responds within the Ollama app. Save what the model said; do not claim an audit or retrieval system is working. **No source documents or RAG are involved yet.**
+
+*Definitions:* LLM = pretrained language model; model weights = numerical parameters loaded to run it; inference = producing answers with an existing model, not training one; prompt = your question/instruction; token = a unit of text processed by the model.
+
+## Stage 2 — OpenAI: learn the hosted alternative
+
+Open https://platform.openai.com/ and read https://developers.openai.com/api/docs/quickstart.
+
+Understand the distinction:
+
+- **ChatGPT** is the conversational product. **The ordinary OpenAI API** is a separate developer service with separate billing; a ChatGPT Plus subscription does not automatically pay for it.
+- An **API** (application programming interface) lets your software send an authorized request to a model service and receive a response.
+- An **API key** is a secret credential for API requests. Never paste it into chat, a GitHub repository, screenshots, public webpages, or client-side code.
+- An API call may be billed based on usage. Before making a paid request, check billing controls and price, and use **public or synthetic** ResearchAudit examples only. Company-confidential material requires employer approval and the appropriate account/data controls.
+
+**Pass condition:** The learner understands API access, credentials, provider differences and cost. This stage does not require payment or making a call until the user chooses to try it.
+
+Official source for separate billing: https://help.openai.com/en/articles/9039756-managing-billing-for-chatgpt-and-the-api-platform
+
+## Stage 3 — LangChain: connect local and hosted providers
+
+We will add LangChain **after** a single Ollama model works and the basic OpenAI API concepts are clear.
+
+An actual LangChain application normally requires **some code**, typically Python or JavaScript. This is a professional engineering skill, not something that a visual Ollama chat window does automatically. We can keep the first application extremely small and use **VS Code with a graphical editor**, learning only the few lines needed. The learner will do their own setup; no unrequested code changes or automation should be represented as already running.
+
+- **LangChain ↔ Ollama:** \`ChatOllama\` in the \`langchain-ollama\` integration.
+- **LangChain ↔ OpenAI API:** \`ChatOpenAI\` in the \`langchain-openai\` integration.
+- Use **the same task and grading rules** for both providers, then record model name, prompt version, response, evidence use, failures, latency and cost where relevant.
+
+Official documentation:
+- https://docs.langchain.com/oss/python/integrations/chat/ollama
+- https://docs.langchain.com/oss/python/integrations/chat/openai
+
+**Pass condition:** A version-controlled minimal project can ask the same question of the local and (when authorized) hosted provider, then save distinct outputs. We do not need four agents yet.
+
+## Stage 4 — RAG: connect ResearchAudit to its evidence
+
+RAG is not fine-tuning or retraining. Build an index using **public frozen** research documents such as:
+
+- \`claims/claim_07_transaction_costs.md\`
+- \`claims/claim_inventory.md\`
+- \`docs/baseline_evaluation.md\`
+- selected functions from \`targets/quant-ai-market-lab-v1.0.0/src/portfolio_backtest.py\`
+
+*Definitions:*
+- **Ingestion:** read allowed source files into the index.
+- **Chunking:** split files into meaningful text/code passages; preserve paths, line numbers and source hashes.
+- **Embedding:** turn a passage into a numerical vector so similar passages can be searched.
+- **Vector database:** store/search those vectors.
+- **Retriever:** return candidate passages for a question.
+- **Grounding:** require the answer to rely on actual supplied passages.
+- **Evaluation:** compare output against independently checked expected answers and verify cited lines.
+
+A first RAG task: **"Which two target-weight validation gaps exist in Claim 7? Show the source lines and say what the tests demonstrate."** A successful run must find the near-unit weight issue and the 2-D broadcasting issue, with verifiable source paths. Compare with an **LLM-only** version of the same question.
+
+**Pass condition:** Relevant evidence is retrieved with verifiable file/line references. Fluency is not proof; do not classify source-code issues as fixed just because an LLM explains them.
+
+## Stage 5 — Business application and later agents
+
+Only after evaluating single-model RAG should we implement the four planned agents (mathematics, code, methodology, skeptic) and a coordinator. For corporate use, add controlled document access, protected secrets, approved data residency/handling, audit trails, repeatable evaluations, monitoring, version pinning and human review. A local Mac pilot is not a multi-user production system.
+
+## What we are **not** doing today
+
+- Not downloading or configuring any model on the user's computer on their behalf.
+- Not training a new language model.
+- Not claiming RAG, LangChain or OpenAI API integration exists in ResearchAudit.
+- Not changing the rule checker, test results, or frozen audit source.
+- Not requiring a Terminal command, Python, an API key, or paid API credits for the **first Ollama GUI milestone**.
+
+## Evidence to record after the first run
+
+Keep a dated local note of: macOS version, Mac chip, RAM, Ollama app version, downloaded **local** model tag, the two exact prompts, summarized responses, failure examples and whether any remote/cloud option was used. Only publish a sanitized note after reviewing it for secrets and private data.
