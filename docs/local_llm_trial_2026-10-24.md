@@ -71,3 +71,25 @@ Selected retrieved evidence included:
 - `[E9]` `targets/quant-ai-market-lab-v1.0.0/src/portfolio_backtest.py:369-384`, **not** the most relevant target-weight validation statement at `portfolio_backtest.py:263-275`. This is a *documented keyword-retrieval limitation*: it located the summary and tests but selected a less relevant source-code snippet. Improving retrieval to cover specific original code ranges and measuring evidence coverage will be separate work, not a success implied by the passing tests.
 
 **No claims of full mathematical source validation, semantic-vector RAG, embedding retrieval, corporate deployment, or independent model judgment follow from this partial run.**
+
+## Follow-up: completed local keyword-RAG answer, reviewed against source (24 October 2026)
+
+The owner subsequently supplied the Qwen3 answer and the return to the macOS shell prompt. This **supersedes only the previous section's pending model-output status**: the **end-to-end local retrieval → LangChain → Ollama/Qwen3 → generated answer** is now user-observed. Neither the model nor the RAG program executed the target's code during this inference.
+
+**What the model got right:**
+
+1. It identified slightly above-unit target weights accepted because `np.isclose` applies its default relative tolerance. This is documented in `claims/claim_07_transaction_costs.md:38-42` and demonstrated by `tests/test_claim_07_transaction_costs.py:78-82`.
+2. It identified two-dimensional target weights accepted even though a one-dimensional vector is expected; broadcasting can distort the transaction-cost result. This is documented in `claims/claim_07_transaction_costs.md:38-42` and demonstrated by `tests/test_claim_07_transaction_costs.py:84-89`.
+3. It correctly qualified these as characterization tests of known defects rather than correctness tests and noted that the frozen source was unchanged.
+
+**What must be corrected or qualified before using the answer as an audit report:**
+
+- The model cited **[E8] `tests/test_claim_07_transaction_costs.py:65-80`** for the first test. That span includes the example input at lines 78-80, but **not the assertions at lines 81-82** establishing over-allocation. The retrieved **[E5] `tests/test_claim_07_transaction_costs.py:81-96`** does contain those assertions.
+- The model cited **[E6] `tests/test_claim_07_transaction_costs.py:89-104`** for the 2-D test. That span begins at the final assertion but **omits the test input and array-shape assertions at lines 84-88**. **[E5]** contains the full matrix test.
+- The model stated that the second test confirms the implementation **"correctly computes costs"** for a matrix input. That interpretation is **false**: the test checks that matrix input is accepted and gives a **larger transaction cost than the flat equivalent**, documenting a defect. A passing characterization test does not validate correct cost handling.
+- Describing target portfolio weights as a **"probability distribution over assets"** is imprecise here. They are **portfolio allocation fractions** required by this model to sum to one, not random outcome probabilities.
+- The retrieved original-code passage **[E9] `portfolio_backtest.py:369-384`** is not the actual validation logic. The most relevant original code lies in the frozen target at **`portfolio_backtest.py:263-275`**, which the retriever did not select. The model relied mainly on the existing audit summary and tests; it did **not independently rediscover** these bugs by analyzing that original validation block.
+
+**Outcome:** End-to-end keyword-RAG **execution: demonstrated by supplied output**. Identification of two pre-recorded Claim 7 issues: **correct for this single seeded question**. **Citation precision: incomplete**. **Numerical correctness interpretation: one substantive error**. This is **not** a general reliability score, independent defect-discovery benchmark, or authorization to automate financial model approval.
+
+**Recommended next engineering improvement:** Improve evidence selection to capture relevant original function lines and full test blocks; add an automatic citation-line check and benchmark with questions about facts **not already explicitly summarized**. Do that **before** introducing embeddings, vector databases, additional agents or hosted-model comparisons.
