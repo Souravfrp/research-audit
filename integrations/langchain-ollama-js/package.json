@@ -6,9 +6,11 @@
   "description": "First LangChain.js to Ollama call for ResearchAudit",
   "scripts": {
     "start": "node index.mjs",
-    "check": "node --check index.mjs && node --check retriever.mjs && node --check rag.mjs && node --check retriever.test.mjs",
+    "check": "node --check index.mjs && node --check retriever.mjs && node --check rag.mjs && node --check retriever.test.mjs && node --check citation-check.mjs && node --check citation-utils.mjs && node --check citation-check.test.mjs && node --check citation-utils.test.mjs",
     "rag": "node rag.mjs",
-    "rag:check": "node --test retriever.test.mjs"
+    "rag:check": "node --test retriever.test.mjs",
+    "citation:check": "node citation-check.mjs",
+    "test": "node --test retriever.test.mjs citation-utils.test.mjs citation-check.test.mjs"
   },
   "dependencies": {
     "@langchain/core": "1.3.0",

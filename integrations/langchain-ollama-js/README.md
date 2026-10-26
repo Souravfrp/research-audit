@@ -1,6 +1,6 @@
 # First local LangChain ↔ Ollama connection (JavaScript)
 
-**Stage:** A user-reported **successful local LLM-only run** is recorded in [the October 24 trial note](../../docs/local_llm_trial_2026-10-24.md). The new `rag.mjs` is a separate **unrun beginner RAG demonstration**, not a fully validated audit. `index.mjs` remains LLM-only; the RAG exercise retrieves selected allowlisted frozen source files, but never changes them. Neither script uses the OpenAI API or runs the rule checker. GitHub cannot independently execute the Ollama service on the user's Mac.
+**Stage:** A user-reported **successful local LLM-only run** is recorded in [the October 24 trial note](../../docs/local_llm_trial_2026-10-24.md). The new `rag.mjs` is a separate **locally tested keyword-RAG demonstration**, not a fully validated audit. `index.mjs` remains LLM-only; the RAG exercise retrieves selected allowlisted frozen source files, but never changes them. Neither script uses the OpenAI API or runs the rule checker. GitHub cannot independently execute the Ollama service on the user's Mac.
 
 ## What is already available on the learner's Mac
 
@@ -73,7 +73,7 @@ If `npm run check` passes but `npm start` fails, it might be the Ollama service 
 3. The program receives a response from **local Qwen3 via Ollama**, without claiming to have accessed source files.
 4. Record the model, date and result; inspect for unsupported statements.
 
-**Completed based on user-shared Terminal output (24 October 2026):** `npm install`, `npm run check`, and `npm start` returned a LangChain → local Ollama → Qwen3 answer. **Still unverified:** Execution of the new RAG demonstration, quality of retrieval/citations, OpenAI comparison, agents and independent mathematical verification.
+**Completed based on user-shared Terminal output (24 October 2026):** `npm install`, `npm run check`, and `npm start` returned a LangChain → local Ollama → Qwen3 answer. **Locally verified:** RAG execution, Claim 7 evidence retrieval, and citation-checker tests. **Still unverified:** general retrieval/citation reliability, OpenAI comparison, agents, and independent mathematical verification.
 
 
 ## Next lesson: first retrieval-augmented answer (RAG)
@@ -86,7 +86,7 @@ The demonstration reads three **local, allowlisted** ResearchAudit files without
 - `tests/test_claim_07_transaction_costs.py`
 - `targets/quant-ai-market-lab-v1.0.0/src/portfolio_backtest.py`
 
-It divides their text into small overlapping **chunks** (16 lines each, starting every 8 lines), scores each chunk against the question, selects up to 10 relatively relevant chunks, prints **source path + exact line range + source file SHA-256**, and passes those excerpts to the same Qwen3 model via LangChain. This is genuine (keyword-based) retrieval + generation, but **not semantic/vector RAG yet**, and it does not guarantee relevant documents are found.
+It divides their text into small overlapping **chunks** (24 lines each, starting every 8 lines), scores each chunk against the question, selects up to 10 relatively relevant chunks, prints **source path + exact line range + source file SHA-256**, and passes those excerpts to the same Qwen3 model via LangChain. This is genuine (keyword-based) retrieval + generation, but **not semantic/vector RAG yet**, and it does not guarantee relevant documents are found.
 
 From the already installed example folder on your Mac, run:
 
@@ -117,3 +117,46 @@ npm run rag
 The retrieval test checks whether the selected snippets include the documented near-unit target-weight issue and the two-dimensional broadcasting issue. It is a deliberately narrow, fixture-like smoke test; it is **not a precision/recall benchmark** and doesn't demonstrate broad retrieval reliability. We will later compare local no-RAG vs RAG and evaluate retrieval misses with held-out questions.
 
 Official references: [ChatOllama integration](https://docs.langchain.com/oss/javascript/integrations/chat/ollama) · [Ollama](https://docs.ollama.com/).
+
+## Local RAG and citation verification
+
+I have tested the local keyword-based RAG example using Claim 7
+of ResearchAudit. It retrieves evidence from three allowlisted
+source files and sends selected passages to Qwen3 through Ollama.
+
+I also built a citation checker to inspect evidence labels and
+selected source-line requirements.
+
+### Run the automated tests
+
+From the langchain-ollama-js directory:
+
+    npm ci
+    npm run check
+    npm test
+
+The current test suite contains 13 tests covering retrieval,
+citation utilities, and citation-checker behaviour.
+These tests do not require Ollama to be running.
+
+### Check a saved AI answer
+
+    npm run citation:check -- test-fixtures/correct-matrix.txt
+
+Exit codes:
+- 0: the implemented citation checks passed
+- 1: citation verification failed
+- 2: required filename was not supplied
+
+The test-fixtures directory contains examples with correct,
+incorrect, missing-source, and unknown-label citations.
+
+### Limitations
+
+This is an experimental auditing system, not a mathematical
+proof system. Retrieval is keyword-based and does not use
+embeddings or a vector database. Some checks are specific
+to Claim 7. Passing the tests does not prove that every
+AI-generated statement is mathematically correct.
+
+The original financial implementation remains unchanged.

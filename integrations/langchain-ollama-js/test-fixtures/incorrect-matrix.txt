@@ -1,0 +1,64 @@
+
+> researchaudit-local-llm-first-step@0.1.0 rag
+> node rag.mjs
+
+LOCAL KEYWORD-RAG DEMONSTRATION
+Retriever: simple keyword match (no embeddings or vector DB)
+Sources are local files in this ResearchAudit checkout.
+
+Selected source passages:
+  [E1] claims/claim_07_transaction_costs.md:1-24 (source sha256: 15f1f497bfc4...)
+  [E2] claims/claim_07_transaction_costs.md:17-40 (source sha256: 15f1f497bfc4...)
+  [E3] tests/test_claim_07_transaction_costs.py:57-80 (source sha256: 6b3441e3c9c3...)
+  [E4] claims/claim_07_transaction_costs.md:41-43 (source sha256: 15f1f497bfc4...)
+  [E5] tests/test_claim_07_transaction_costs.py:73-96 (source sha256: 6b3441e3c9c3...)
+  [E6] targets/quant-ai-market-lab-v1.0.0/src/portfolio_backtest.py:257-280 (source sha256: d1b4e45ecc2b...)
+  [E7] tests/test_claim_07_transaction_costs.py:9-32 (source sha256: 6b3441e3c9c3...)
+  [E8] targets/quant-ai-market-lab-v1.0.0/src/portfolio_backtest.py:361-384 (source sha256: d1b4e45ecc2b...)
+  [E9] tests/test_claim_07_transaction_costs.py:89-112 (source sha256: 6b3441e3c9c3...)
+  [E10] targets/quant-ai-market-lab-v1.0.0/src/portfolio_backtest.py:209-232 (source sha256: d1b4e45ecc2b...)
+
+Qwen3 answer (verify every citation manually):
+
+The two input-validation gaps in the audited transaction-cost rebalance implementation are:
+
+---
+
+**Gap 1: Acceptance of near-unit total weights (sum > 1) without rejection**
+
+- **Evidence**: [E3] tests/test_claim_07_transaction_costs.py:57-80 and [E4] claims/claim_07_transaction_costs.md:41–43
+- **Description**: The test `test_current_near_unit_weights_are_accepted_and_overallocate` (defined in [E5]) demonstrates that the function accepts weights that sum to slightly more than 1 (e.g., `[0.5, 0.500009]`) and does not reject them. The assertion `self.assertGreater(weights.sum(), 1.)` confirms that such inputs are accepted and result in overallocation.
+- **Consequence**: The portfolio is not properly normalized, leading to invalid portfolio allocations where total weights exceed 1. This violates the assumption of a valid portfolio (non-negative, summing to 1), potentially distorting the rebalance logic and resulting in incorrect portfolio values and transaction costs.
+- **Source**: [E5] tests/test_claim_07_transaction_costs.py:73–96
+  > `def test_current_near_unit_weights_are_accepted_and_overallocate(self):`
+  > `weights = np.array([0.5, 0.500009])`
+  > `out = execute_rebalance(...)`
+  > `self.assertGreater(weights.sum(), 1.)`
+  > `self.assertGreater(out["Asset values"].sum() - out["Portfolio value"], 1e-5)`
+
+---
+
+**Gap 2: Acceptance of two-dimensional (matrix) weights without validation or correction**
+
+- **Evidence**: [E5] tests/test_claim_07_transaction_costs.py:73–96 and [E4] claims/claim_07_transaction_costs.md:41–43
+- **Description**: The test `test_current_matrix_weights_are_accepted_and_change_cost` (in [E5]) shows that a 2D weight array (e.g., `[[.5], [.5]]`) is accepted and processed, resulting in a transaction cost that is higher than for a flat 1D weight array. The test asserts that the cost increases, which is incorrect under the assumption that weights should be normalized to sum to 1.
+- **Consequence**: The function fails to validate that input weights are properly shaped and normalized. It allows broadcasting and matrix inputs without enforcing that the weights are valid (i.e., sum to 1 and are non-negative). This leads to inconsistent or erroneous cost calculations and portfolio values, especially when the input is not a flat vector.
+- **Source**: [E5] tests/test_claim_07_transaction_costs.py:90–96
+  > `def test_current_matrix_weights_are_accepted_and_change_cost(self):`
+  > `matrix = execute_rebalance(..., np.array([[.5], [.5]]), cost_bps=10)`
+  > `self.assertEqual(matrix["Asset values"].shape, (2, 1))`
+  > `self.assertGreater(matrix["Transaction cost"], flat["Transaction cost"])`
+
+---
+
+**Note on Other Validation**:
+While the code raises errors for invalid inputs like negative cost rates or non-finite values (e.g., [E6] and [E7]), these are not considered gaps because they are explicitly handled. The two gaps above are distinct because they involve **valid inputs that are incorrectly accepted** due to insufficient validation, not just invalid inputs being rejected. The passing of characterization tests (like those in [E5]) does not certify correctness—it only preserves evidence of the current behavior, as stated in [E4].
+
+Thus, the two input-validation gaps are:
+
+1. Acceptance of weights with sum > 1 (near-unit weights) without rejection.
+2. Acceptance of matrix weights without validation or normalization.
+
+Each leads to invalid portfolio allocations and incorrect transaction cost calculations.
+
+Reminder: source retrieval and a fluent answer do not establish mathematical correctness.

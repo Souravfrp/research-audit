@@ -27,3 +27,19 @@ test("keyword retrieval surfaces the recorded Claim 7 validation gaps", async ()
 test("empty query retrieves no passages", async () => {
   assert.deepEqual(retrieve("?", await loadEvidence()), []);
 });
+
+test("retrieves original portfolio validation code", async () => {
+  const question =
+    "Which two input-validation gaps exist in the audited transaction-cost " +
+    "rebalance implementation? Explain their consequences and cite sources.";
+
+  const results = retrieve(question, await loadEvidence());
+
+  const found = results.some((r) =>
+    r.path.endsWith("/portfolio_backtest.py") &&
+    r.startLine <= 263 &&
+    r.endLine >= 275
+  );
+
+  assert.ok(found, "Original validation code was not retrieved");
+});
